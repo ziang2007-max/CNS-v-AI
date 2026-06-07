@@ -1073,6 +1073,47 @@
             line-height: 1.3;
         }
 
+
+        /* --- Beautiful Buttons --- */
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            border: none;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary) !important;
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: rgba(79, 70, 229, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.1);
+        }
+
 </style>
 </head>
 <body>
@@ -1128,8 +1169,8 @@
         "Công nghệ xuất sắc nhất không phải là công nghệ có thể thay thế con người, mà là công nghệ được định hướng bởi tư duy độc lập và sự liêm chính học thuật."
     </blockquote>
     <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary" onclick="document.querySelector('#projects').scrollIntoView({behavior: 'smooth'})">Khám phá hành trình</a>
-        <a href="#summary" class="btn btn-outline" onclick="document.querySelector('#summary').scrollIntoView({behavior: 'smooth'})">Xem tổng kết</a>
+        <a href="#" class="btn btn-primary" data-target="projects">Khám phá hành trình</a>
+        <a href="#" class="btn btn-outline" data-target="summary">Xem tổng kết</a>
     </div>
 </div>
 

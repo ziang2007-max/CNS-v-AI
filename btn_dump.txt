@@ -1,0 +1,10 @@
+ học thuật."
+    </blockquote>
+    <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary" onclick="document.querySelector('#projects').scrollIntoView({behavior: 'smooth'})">Khám phá hành trình</a>
+        <a href="#summary" class="btn btn-outline" onclick="document.querySelector('#summary').scrollIntoView({behavior: 'smooth'})">Xem tổng kết</a>
+    </div>
+</div>
+
+                    <div class="hero-visual">
+                <img src="images/portrait.png" alt="Ngô Văn Gian
