@@ -917,8 +917,10 @@
         .animated-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; overflow: hidden;
-            background: #f8fafc;
+            z-index: -2; overflow: hidden;
+            background: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f1f5f9, #eff6ff) !important;
+            background-size: 400% 400% !important;
+            animation: gradientBG 15s ease infinite !important;
             pointer-events: none;
         }
         .blob {
@@ -1055,9 +1057,7 @@
 
         /* --- Moving Gradient Background --- */
         body {
-            background: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f1f5f9, #eff6ff) !important;
-            background-size: 400% 400% !important;
-            animation: gradientBG 15s ease infinite !important;
+            background: transparent !important;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -1175,7 +1175,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
+            z-index: 0;
             overflow: hidden;
             pointer-events: none;
         }
