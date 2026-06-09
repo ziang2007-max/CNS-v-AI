@@ -1220,40 +1220,44 @@
                 opacity: 0;
             }
         }
-        /* --- Custom Cursor --- */
+        /* --- Premium Custom Cursor --- */
         body, a, button, .bento-card, .btn, .nav-links a {
             cursor: none !important;
         }
 
-        .cursor-dot,
+        .cursor-dot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 8px; height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            z-index: 10000;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            transition: opacity 0.3s ease;
+        }
+
         .cursor-outline {
             position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
+            top: 0; left: 0;
+            width: 40px; height: 40px;
+            border: 1.5px solid #fff;
             border-radius: 50%;
             z-index: 9999;
             pointer-events: none;
+            mix-blend-mode: difference;
+            transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
         }
 
-        .cursor-dot {
-            width: 10px;
-            height: 10px;
-            background-color: var(--primary);
-        }
-
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(79, 70, 229, 0.5);
-            transition: width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out;
+        .cursor-hover .cursor-dot {
+            opacity: 0;
         }
 
         .cursor-hover .cursor-outline {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(79, 70, 229, 0.15);
-            border-color: rgba(79, 70, 229, 0.8);
+            width: 70px; height: 70px;
+            background-color: #fff;
+            border-color: transparent;
+            mix-blend-mode: difference;
         }
 </style>
 </head>
@@ -1680,7 +1684,7 @@
             });
         });
     </script>
-    <!-- Custom Cursor -->
+    <!-- Premium Custom Cursor -->
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
 
@@ -1688,18 +1692,30 @@
         const cursorDot = document.querySelector('[data-cursor-dot]');
         const cursorOutline = document.querySelector('[data-cursor-outline]');
         
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let outlineX = mouseX;
+        let outlineY = mouseY;
+        
         window.addEventListener('mousemove', function (e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
             
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 300, fill: "forwards" });
+            // Immediate transform for the dot using hardware acceleration
+            cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         });
+        
+        // Smooth animation loop for the outline
+        function animateCursor() {
+            // Easing factor (0.15 = smooth delay)
+            outlineX += (mouseX - outlineX) * 0.15;
+            outlineY += (mouseY - outlineY) * 0.15;
+            
+            cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate(-50%, -50%)`;
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
 
         // Add hover effects for clickable elements
         const hoverElements = document.querySelectorAll('a, button, .bento-card, .btn, .toggle-btn');
