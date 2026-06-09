@@ -1168,8 +1168,8 @@
             filter: contrast(1.08) saturate(1.05);
         }
 
-        /* --- Floating Particles --- */
-        .floating-particles {
+        /* --- Premium Glass Orbs --- */
+        .premium-orbs {
             position: fixed;
             top: 0;
             left: 0;
@@ -1180,53 +1180,44 @@
             pointer-events: none;
         }
 
-        .circles {
+        .orb {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
-
-        .circles li {
-            position: absolute;
-            display: block;
-            list-style: none;
-            width: 20px;
-            height: 20px;
-            background: rgba(79, 70, 229, 0.1);
-            animation: animate 25s linear infinite;
             bottom: -150px;
-            border-radius: 12px;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: orbFloat 20s infinite linear;
+            opacity: 0;
         }
 
-        .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-        .circles li:nth-child(2) { left: 10%; width: 30px; height: 30px; animation-delay: 2s; animation-duration: 12s; }
-        .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-        .circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
-        .circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
-        .circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
-        .circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
-        .circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
-        .circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
-        .circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+        .orb:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-duration: 25s; animation-delay: 0s; }
+        .orb:nth-child(2) { left: 55%; width: 140px; height: 140px; animation-duration: 32s; animation-delay: -5s; }
+        .orb:nth-child(3) { left: 85%; width: 50px; height: 50px; animation-duration: 18s; animation-delay: -12s; }
+        .orb:nth-child(4) { left: 25%; width: 100px; height: 100px; animation-duration: 28s; animation-delay: -8s; }
+        .orb:nth-child(5) { left: 70%; width: 120px; height: 120px; animation-duration: 35s; animation-delay: -15s; }
+        .orb:nth-child(6) { left: 45%; width: 60px; height: 60px; animation-duration: 22s; animation-delay: -3s; }
+        .orb:nth-child(7) { left: 15%; width: 40px; height: 40px; animation-duration: 15s; animation-delay: -20s; }
+        .orb:nth-child(8) { left: 80%; width: 160px; height: 160px; animation-duration: 40s; animation-delay: -10s; }
+        .orb:nth-child(9) { left: 35%; width: 90px; height: 90px; animation-duration: 26s; animation-delay: -2s; }
+        .orb:nth-child(10) { left: 95%; width: 55px; height: 55px; animation-duration: 20s; animation-delay: -25s; }
 
-        @keyframes animate {
+        @keyframes orbFloat {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(100px) translateX(0px);
+                opacity: 0;
+            }
+            15% {
                 opacity: 1;
-                border-radius: 20%;
+            }
+            85% {
+                opacity: 1;
             }
             100% {
-                transform: translateY(-1000px) rotate(720deg);
+                transform: translateY(-120vh) translateX(120px);
                 opacity: 0;
-                border-radius: 50%;
             }
         }
         /* --- Custom Cursor --- */
@@ -1267,11 +1258,18 @@
 </style>
 </head>
 <body>
-    <!-- Floating Particles -->
-    <div class="floating-particles">
-        <ul class="circles">
-            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-        </ul>
+    <!-- Premium Glass Orbs -->
+    <div class="premium-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
     </div>
 
     <!-- Animated Background -->
