@@ -1168,112 +1168,133 @@
             filter: contrast(1.08) saturate(1.05);
         }
 
-        /* --- Premium Glass Orbs --- */
-        .premium-orbs {
+        /* --- Cyberpunk/Sci-fi Floating Geometry --- */
+        .cyber-particles {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            overflow: hidden;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 0; overflow: hidden;
             pointer-events: none;
+            perspective: 1000px;
         }
 
-        .orb {
+        .cyber-shape {
             position: absolute;
-            bottom: -150px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.5);
-            animation: orbFloat 20s infinite linear;
+            bottom: -200px;
+            border: 2px solid rgba(14, 165, 233, 0.4);
+            background: rgba(14, 165, 233, 0.02);
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.3), inset 0 0 10px rgba(14, 165, 233, 0.2);
+            animation: cyberFloat 20s infinite linear;
             opacity: 0;
+            backdrop-filter: blur(1px);
+        }
+        
+        .cyber-shape.ring {
+            border-radius: 50%;
+            border-color: rgba(79, 70, 229, 0.4);
+            box-shadow: 0 0 10px rgba(79, 70, 229, 0.3), inset 0 0 10px rgba(79, 70, 229, 0.2);
         }
 
-        .orb:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-duration: 25s; animation-delay: 0s; }
-        .orb:nth-child(2) { left: 55%; width: 140px; height: 140px; animation-duration: 32s; animation-delay: -5s; }
-        .orb:nth-child(3) { left: 85%; width: 50px; height: 50px; animation-duration: 18s; animation-delay: -12s; }
-        .orb:nth-child(4) { left: 25%; width: 100px; height: 100px; animation-duration: 28s; animation-delay: -8s; }
-        .orb:nth-child(5) { left: 70%; width: 120px; height: 120px; animation-duration: 35s; animation-delay: -15s; }
-        .orb:nth-child(6) { left: 45%; width: 60px; height: 60px; animation-duration: 22s; animation-delay: -3s; }
-        .orb:nth-child(7) { left: 15%; width: 40px; height: 40px; animation-duration: 15s; animation-delay: -20s; }
-        .orb:nth-child(8) { left: 80%; width: 160px; height: 160px; animation-duration: 40s; animation-delay: -10s; }
-        .orb:nth-child(9) { left: 35%; width: 90px; height: 90px; animation-duration: 26s; animation-delay: -2s; }
-        .orb:nth-child(10) { left: 95%; width: 55px; height: 55px; animation-duration: 20s; animation-delay: -25s; }
+        .cyber-shape.triangle {
+            width: 0 !important;
+            height: 0 !important;
+            border-left: 35px solid transparent !important;
+            border-right: 35px solid transparent !important;
+            border-bottom: 60px solid rgba(16, 185, 129, 0.4) !important;
+            border-top: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+        }
 
-        @keyframes orbFloat {
+        .cyber-shape:nth-child(1) { left: 10%; width: 60px; height: 60px; animation-duration: 22s; animation-delay: 0s; }
+        .cyber-shape:nth-child(2) { left: 55%; width: 90px; height: 90px; animation-duration: 28s; animation-delay: -5s; }
+        .cyber-shape:nth-child(3) { left: 85%; width: 40px; height: 40px; animation-duration: 18s; animation-delay: -12s; }
+        .cyber-shape:nth-child(4) { left: 25%; width: 70px; height: 70px; animation-duration: 25s; animation-delay: -8s; }
+        .cyber-shape:nth-child(5) { left: 70%; width: 100px; height: 100px; animation-duration: 32s; animation-delay: -15s; }
+        .cyber-shape:nth-child(6) { left: 45%; width: 50px; height: 50px; animation-duration: 20s; animation-delay: -3s; }
+        .cyber-shape:nth-child(7) { left: 15%; width: 30px; height: 30px; animation-duration: 15s; animation-delay: -20s; }
+        .cyber-shape:nth-child(8) { left: 80%; width: 80px; height: 80px; animation-duration: 35s; animation-delay: -10s; }
+        .cyber-shape:nth-child(9) { left: 35%; width: 110px; height: 110px; animation-duration: 30s; animation-delay: -2s; }
+        .cyber-shape:nth-child(10) { left: 95%; width: 45px; height: 45px; animation-duration: 19s; animation-delay: -25s; }
+
+        @keyframes cyberFloat {
             0% {
-                transform: translateY(100px) translateX(0px);
+                transform: translateY(100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.8);
                 opacity: 0;
             }
-            15% {
-                opacity: 1;
-            }
-            85% {
-                opacity: 1;
-            }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
             100% {
-                transform: translateY(-120vh) translateX(120px);
+                transform: translateY(-120vh) rotateX(360deg) rotateY(720deg) rotateZ(180deg) scale(1.2);
                 opacity: 0;
             }
         }
-        /* --- Premium Custom Cursor --- */
+        
+        /* --- Sci-Fi Custom Cursor --- */
         body, a, button, .bento-card, .btn, .nav-links a {
             cursor: none !important;
         }
 
         .cursor-dot {
-            position: fixed;
-            top: 0; left: 0;
+            position: fixed; top: 0; left: 0;
             width: 8px; height: 8px;
-            background-color: #fff;
+            background-color: #0ea5e9;
+            box-shadow: 0 0 10px #0ea5e9, 0 0 20px #0ea5e9;
             border-radius: 50%;
-            z-index: 10000;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            transition: opacity 0.3s ease;
+            z-index: 10000; pointer-events: none;
         }
 
         .cursor-outline {
-            position: fixed;
-            top: 0; left: 0;
-            width: 40px; height: 40px;
-            border: 1.5px solid #fff;
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+            position: fixed; top: 0; left: 0;
+            width: 44px; height: 44px;
+            z-index: 9999; pointer-events: none;
+            transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .cursor-hover .cursor-dot {
-            opacity: 0;
+        .cursor-outline-inner {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(14, 165, 233, 0.3);
+            border-top-color: #0ea5e9;
+            border-bottom-color: #4f46e5;
+            animation: spinCursor 4s linear infinite;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        @keyframes spinCursor {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .cursor-hover .cursor-outline {
-            width: 70px; height: 70px;
-            background-color: #fff;
-            border-color: transparent;
-            mix-blend-mode: difference;
+            width: 60px; height: 60px;
+        }
+        
+        .cursor-hover .cursor-outline-inner {
+            border-width: 3px;
+            animation: spinCursor 1.5s linear infinite;
+            border-radius: 12px;
+            border-color: #0ea5e9;
+            background: rgba(14, 165, 233, 0.1);
+            box-shadow: 0 0 25px rgba(14, 165, 233, 0.4);
         }
 </style>
 </head>
 <body>
-    <!-- Premium Glass Orbs -->
-    <div class="premium-orbs">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
+    <!-- Cyberpunk Geometry Background -->
+    <div class="cyber-particles">
+        <div class="cyber-shape box"></div>
+        <div class="cyber-shape ring"></div>
+        <div class="cyber-shape triangle"></div>
+        <div class="cyber-shape ring"></div>
+        <div class="cyber-shape box"></div>
+        <div class="cyber-shape triangle"></div>
+        <div class="cyber-shape box"></div>
+        <div class="cyber-shape ring"></div>
+        <div class="cyber-shape triangle"></div>
+        <div class="cyber-shape box"></div>
     </div>
 
     <!-- Animated Background -->
@@ -1684,9 +1705,11 @@
             });
         });
     </script>
-    <!-- Premium Custom Cursor -->
+    <!-- Sci-Fi Custom Cursor -->
     <div class="cursor-dot" data-cursor-dot></div>
-    <div class="cursor-outline" data-cursor-outline></div>
+    <div class="cursor-outline" data-cursor-outline>
+        <div class="cursor-outline-inner"></div>
+    </div>
 
     <script>
         const cursorDot = document.querySelector('[data-cursor-dot]');
@@ -1694,23 +1717,26 @@
         
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
+        let dotX = mouseX;
+        let dotY = mouseY;
         let outlineX = mouseX;
         let outlineY = mouseY;
         
         window.addEventListener('mousemove', function (e) {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            
-            // Immediate transform for the dot using hardware acceleration
-            cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         });
         
-        // Smooth animation loop for the outline
         function animateCursor() {
-            // Easing factor (0.15 = smooth delay)
-            outlineX += (mouseX - outlineX) * 0.15;
-            outlineY += (mouseY - outlineY) * 0.15;
+            // Smooth lerp for dot (fast response but removes micro-stutters from mouse polling)
+            dotX += (mouseX - dotX) * 0.4;
+            dotY += (mouseY - dotY) * 0.4;
             
+            // Smooth lerp for outline (slower for that aesthetic trailing effect)
+            outlineX += (mouseX - outlineX) * 0.08;
+            outlineY += (mouseY - outlineY) * 0.08;
+            
+            cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
             cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate(-50%, -50%)`;
             
             requestAnimationFrame(animateCursor);
